@@ -1,0 +1,141 @@
+@font-face {
+    font-family: "term";
+    src: url("assets/font/Fixedsys500c.woff");
+}
+
+
+::selection {
+    background: #FF5E99;
+  }
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    font-size: 16pt;
+    font-family: term, Inconsolata, monospace, "Noto Sans Mono CJK TC", "微軟正黑體";
+    color: white;
+    background-color: black;
+    
+  }
+  @media (max-width: 600px) {
+    body {
+      font-size: 12pt;
+    }
+  }
+  #container {
+    padding: .2em 1.5em 1em 1em;
+  }
+  #container output {
+    clear: both;
+    width: 100%;
+    white-space: pre-wrap;
+    
+  }
+  
+  #container output h3 {
+    margin: 0;
+  }
+  #container output pre {
+    margin: 0;
+  }
+  #container output .error {
+    color: red;
+  }
+  #container output .warn {
+    color: yellow;
+  }
+  .input-line {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: horizontal;
+    box-align: stretch;
+    clear: both;
+  }
+  .input-line > div:nth-child(2) {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+  }
+  .prompt {
+    white-space: nowrap;
+    color: #96b38a;
+    margin-right: 7px;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-orient: vertical;
+    display: box;
+    box-pack: center;
+    box-orient: vertical;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  .prompt .green {
+    color: greenyellow;
+  }
+  .prompt .white {
+    color: white;
+  }
+  .cmdline {
+    outline: none;
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    font: inherit;
+    border: none;
+    color: inherit;
+  }
+  .ls-files {
+
+    -webkit-column-width: 100px;
+    -moz-column-width: 100px;
+    -o-column-width: 100px;
+    column-width: 100px;
+  }
+  
+.photo {
+    width: 90vw;
+    max-width: 500px;
+    border: solid white 7px;
+    box-shadow: 8px 8px 0 blue;
+    margin: .2rem 0 1rem 0;
+}
+  
+  /************************************************************/
+  /* SVG Clock                                                */
+  /************************************************************/
+  
+  .clock-container {
+    display: none /*inline-block*/;
+    position: relative;
+    width: 200px;
+    vertical-align: middle;
+    overflow: hidden;
+  } 
+  
+  .clock-container > svg > circle {
+    stroke-width: 2px;
+    stroke: #fff;
+  }
+  
+  .hour, .min, .sec { 
+    stroke-width: 1px;
+    fill: #333;
+    stroke: #555;
+  }
+  
+  .sec {
+     stroke: #f55;
+  }
+  
+  
