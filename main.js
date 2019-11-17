@@ -118,7 +118,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     }
 
     function cmdCheck() {
-        $(".cmdline:last").removeClass().addClass("cmdline");
+        $(".cmdline").removeClass().addClass("cmdline");
         //if(!cmdChecking) return true;
 
         var typed = $(".cmdline:last").val().split(" ")[0];
