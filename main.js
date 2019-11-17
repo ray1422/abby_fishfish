@@ -11,7 +11,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   const CMDS_ = [
-    'unlock', 'photo', 'build', 'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'ls'
+    'unlock', 'photo', 'build', 'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'ls', 'screenfetch', 'neofetch'
   ].sort();
   
   var fs_ = null;
@@ -164,6 +164,15 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             output('<pre>' + encodedStr + '</pre>');
           });          
           break;
+        case 'screenfetch':case 'neofetch':
+          $.get( './assets/asciiart/screenfetch.txt', function(data) {
+            var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                return '&#'+i.charCodeAt(0)+';';
+            });
+            output('<pre>' + encodedStr + '</pre>');
+            $("#dingdong")[0].play();
+          });          
+          break;
         case 'clear':
           output_.innerHTML = '';
           this.value = '';
@@ -179,11 +188,11 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         case 'echo':
           output( args.join(' ') );
           break;
-        case 'help':
+        case 'help':case '?':
           output('<div class="ls-files">' + CMDS_.join('<br>') + '</div>');
           break;
         case 'uname':
-          output(navigator.appVersion);
+          output(navigator.userAgent);
           break;
        
         default:

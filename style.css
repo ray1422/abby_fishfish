@@ -19,6 +19,9 @@
     background-color: black;
     
   }
+  pre, tt {
+    font-family: term, monospace;
+  }
   @media (max-width: 600px) {
     body {
       font-size: 12pt;
@@ -97,10 +100,10 @@
   }
   .ls-files {
 
-    -webkit-column-width: 100px;
-    -moz-column-width: 100px;
-    -o-column-width: 100px;
-    column-width: 100px;
+    -webkit-column-width: 150px;
+    -moz-column-width: 150px;
+    -o-column-width: 150px;
+    column-width: 150px;
   }
   
 .photo {
