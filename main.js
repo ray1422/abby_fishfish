@@ -190,7 +190,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                 case 'sudo':
                     output("<span class='error'>Fatal: </span><span class='warn'>Executing commands as root is EXTREMELY dangerous. Please don't do this.</span>");
                     break;
-                case 'ls':
+                case 'ls': case 'dir':
                     output('<span class="error">❤️❤️❤️❤️❤️</span>');
                     break;
                 case 'photo':
