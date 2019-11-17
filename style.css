@@ -30,6 +30,7 @@
   #container {
     padding: 1.2em 1.5em 1em 1em;
   }
+
   #container output {
     clear: both;
     width: 100%;
@@ -43,10 +44,10 @@
   #container output pre {
     margin: 0;
   }
-  #container output .error {
+  #container output .error, .cmdline.error {
     color: red;
   }
-  #container output .warn {
+  #container output .warn, .cmdline.warn {
     color: yellow;
   }
   .input-line {
@@ -83,7 +84,7 @@
     -moz-user-select: none;
     user-select: none;
   }
-  .prompt .green {
+  .prompt .green, input.green {
     color: greenyellow;
   }
   .prompt .white {
