@@ -34,7 +34,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   function cls_(e){
     if(e.keyCode == 17) ctrlPressed = true;
     else {
-        if(e.keyCode == 76) {
+        if(e.keyCode == 76 && ctrlPressed) {
             output_.innerHTML = '';
             e.preventDefault();
         }
@@ -128,7 +128,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             }
             if(!password) {
                 output('Usage: unlock &lt;your password here&gt;');
-            } else if (md5(md5(password)) != '2f7abc6e4203229f6bcf5ef744594e73') {
+            } else if (sha256(sha256(password) + 'Abby<3Ray') != 'a236873bd652a7f0f25b56e255bfc2941eb7e8d08a401347881545ad9cd849f1') {
                 sleep(1500)
                 output("<span class='warn'>Wrong Password!</span>");
             } else {
@@ -235,7 +235,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   //
   return {
     init: function() {
-      output('<h2 style="letter-spacing: 4px">魚魚跟胖胖的小屋</h2><p>輸入 help 以獲得更多說明。</p>');
+      output('<h2 style="letter-spacing: 4px; margin-top: -1rem;">魚魚跟胖胖的小屋</h2><p>輸入 help 以獲得更多說明。</p>');
     },
     output: output
   }
