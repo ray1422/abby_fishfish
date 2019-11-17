@@ -26,19 +26,32 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 
   cmdLine_.addEventListener('click', inputTextClick_, false);
   cmdLine_.addEventListener('keydown', historyHandler_, false);
+  cmdLine_.addEventListener('keydown', historyHandler_, false);
   cmdLine_.addEventListener('keydown', processNewCommand_, false);
-  cmdLine_.addEventListener('keydown', cls_, false);
+  document.body.addEventListener('keydown', ctrlShortcut_, false);
+  document.body.addEventListener('keyup', ctrlUp_, false);
 
   var ctrlPressed = false;
   //
-  function cls_(e){
-    if(e.keyCode == 17) ctrlPressed = true;
-    else {
-        if(e.keyCode == 76 && ctrlPressed) {
-            output_.innerHTML = '';
-            e.preventDefault();
-        }
+  function ctrlUp_(e) {
+      if(e.which == 17) {
         ctrlPressed = false;
+      }
+  }
+  //
+  function ctrlShortcut_(e){
+    if(e.keyCode == 17) ctrlPressed = true;
+    else if(ctrlPressed) {
+      if(e.keyCode == 76) {
+          output_.innerHTML = '';
+          e.preventDefault();
+      } else if(e.keyCode == 187 || e.keyCode == 107) {
+        $("body").css('font-size', parseFloat($("body").css('font-size').replace('px', '')) + 2 + 'px')
+        e.preventDefault();
+      }  else if(e.keyCode == 189 || e.keyCode == 109) {
+        $("body").css('font-size', parseFloat($("body").css('font-size').replace('px', '')) - 2 + 'px')
+        e.preventDefault();
+      }
     }
   }
 
