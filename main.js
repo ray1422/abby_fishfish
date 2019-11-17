@@ -257,7 +257,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                         $("#dingdong")[0].play();
                     });
                     break;
-                case 'clear':
+                case 'clear': case 'cls':
                     output_.innerHTML = '';
                     this.value = '';
                     return;
