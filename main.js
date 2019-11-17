@@ -188,14 +188,14 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             
             switch (cmd) {
                 case 'sudo':
-                    output("<span class='error'>Fatel: </span><span class='warn'>Executing commands as root is EXTREMELY dangerous. Please don't do this.</span>");
+                    output("<span class='error'>Fatal: </span><span class='warn'>Executing commands as root is EXTREMELY dangerous. Please don't do this.</span>");
                     break;
                 case 'ls':
                     output('<span class="error">❤️❤️❤️❤️❤️</span>');
                     break;
                 case 'photo':
                     if (!unlocked) {
-                        output("<span class='error'>錯誤：您需要先解鎖。</span>");
+                        output("<span class='error'>Fatal: </span><span class='warn'>Please unlock first.</span>");
                     } else {
                         const eid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
                         output('<p id="' + eid + '"><img class="photo" src="" id="' + eid + '_img"></p>');
