@@ -272,8 +272,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                 case 'echo':
                     output(args.join(' '));
                     break;
-                case 'help':
-                case '?':
+                case 'help': case '?':
                     output('<div class="ls-files">' + CMDS_.join('<br>') + '</div>');
                     break;
                 case 'uname':
