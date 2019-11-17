@@ -2,7 +2,7 @@ $(function() {
   
     // Set the command-line prompt to include the user's IP Address
     //$('.prompt').html('[' + codehelper_ip["IP"] + '@HTML5] # ');
-      $('.prompt').html('<span class="green">user@LifeLabs</span><span class="white"> ~ » </span>');
+      $('.prompt').html('<span class="green">guest@LifeLabs</span><span class="white"> ~ » </span>');
   
     // Initialize a new terminal object
     var term = new Terminal('#input-line .cmdline', '#container output');

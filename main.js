@@ -11,7 +11,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     var output_ = document.querySelector(outputContainer);
 
     const CMDS_ = [
-        'unlock', 'photo', 'build', 'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'ls', 'screenfetch', 'neofetch', 'sudo'
+        'unlock', 'photo', 'build', 'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'ls', 'screenfetch', 'neofetch', 'sudo', 'cp', 'rm', 'mv'
     ].sort();
 
     var fs_ = null;
@@ -278,6 +278,21 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                 case 'uname':
                     output(navigator.userAgent);
                     break;
+                case 'rm':
+                    if(args.length < 1) {
+                        output("Usage: " + cmd + " &lt;file&gt;");
+                        break;
+                    }
+                    output('<span class="error">Fatal: </span><span class="warn"><span class="warn"> Permission denied.</span>');
+                break;
+                case 'cp': case 'mv':
+                    if(args.length < 2) {
+                        output("Usage: " + cmd + " &lt;file&gt; &lt;new file&gt;");
+                    } else {
+                        output('<span class="error">Fatal: </span><span class="warn"> Permission denied.</span>');
+                    }
+                break;
+
 
                 default:
                     if (cmd) {
