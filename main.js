@@ -349,11 +349,17 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         output: output
     }
 };
-const images_src = ['assets/photo/Hsinchu_Station.jpg'];
+const ALBUM_DIR = "./album/";
+const images_src = [
+	'2019_11_Hsinchu/Hsinchu_Station.jpg',
+	'2019_11_NTPC_Christmas_Land/20191120_193426_987.jpg',
+	'2019_11_NTPC_Christmas_Land/20191121_193704_851-01.jpg',
+	'2019_11_NTPC_Christmas_Land/20191121_195214_522-01.jpg'
+	];
 var images = [];
 for (var i = 0; i < images_src.length; i++) {
     images[i] = new Image();
-    images[i].src = images_src[i];
+    images[i].src = ALBUM_DIR + images_src[i];
 }
 
 function setRandImg(eid) {
