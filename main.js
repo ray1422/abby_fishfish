@@ -354,7 +354,8 @@ const images_src = [
 	'2019_11_Hsinchu/Hsinchu_Station.jpg',
 	'2019_11_NTPC_Christmas_Land/20191120_193426_987.jpg',
 	'2019_11_NTPC_Christmas_Land/20191121_193704_851-01.jpg',
-	'2019_11_NTPC_Christmas_Land/20191121_195214_522-01.jpg'
+	'2019_11_NTPC_Christmas_Land/20191121_195214_522-01.jpg',
+    '2019_11_24_TY/20191125_125241_700.jpg'
 	];
 var images = [];
 for (var i = 0; i < images_src.length; i++) {
