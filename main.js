@@ -360,6 +360,7 @@ const images_src = [
 	'2019_12_01_TY/1.jpg',
 	'2019_12_01_TY/2.jpg',
 	'2019_12_01_TY/3.jpg',
+    '2019_12_13_TY/0.jpg'
 	];
 var images = [];
 for (var i = 0; i < images_src.length; i++) {
