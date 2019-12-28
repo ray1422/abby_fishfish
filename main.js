@@ -229,6 +229,12 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                         $.get("assets/asciiart/snowman.txt", function(data) {
                             output($("<div>").text(data).html().replace(/\n/g, "<br />"));
                         })
+                        output_.innerHTML = '';
+                        this.value = '';
+                        $.snowfall.start({
+			            	size: { min: 10, max: 30 } 
+                        });
+                        setTimeout(function(){$.snowfall.stop()}, 50000)
                     } else {
                         output("usage: build &lt;object&gt;");
                     }
