@@ -368,7 +368,8 @@ const images_src = [
     '2019_12_01_TY/3.jpg',
     '2019_12_13_TY/0.jpg',
     '2020_01_11_Syntrend/fish.webp',
-    '2020_01_28_TP_sukiyakino1/IMG_20200128_113805.webp'
+    '2020_01_28_TP_sukiyakino1/IMG_20200128_113805.webp',
+    '2020_02_08_PQ/IMG_20200208_162105-01.jpg'
     ];
 var images = [];
 for (var i = 0; i < images_src.length; i++) {
