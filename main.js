@@ -1,9 +1,10 @@
 var util = util || {};
-util.toArray = function(list) {
+var password = "P@$$W0RD"
+util.toArray = function (list) {
     return Array.prototype.slice.call(list || [], 0);
 };
 
-var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
+var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
     window.URL = window.URL || window.webkitURL;
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
@@ -20,7 +21,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     var histpos_ = 0;
     var histtemp_ = 0;
     var unlocked = false;
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
         cmdLine_.focus();
     }, false);
 
@@ -33,7 +34,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     document.body.addEventListener('keydown', ctrlShortcut_, false);
     document.body.addEventListener('keyup', ctrlUp_, false);
 
-    
+
     //
     function ctrlUp_(e) {
         if (e.which == 17) {
@@ -100,16 +101,16 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     var lastVal = ""
 
     function autoComplate() {
-        if(autoComplating) {
-            if(complatingList.length <= 0) return;
+        if (autoComplating) {
+            if (complatingList.length <= 0) return;
             complatingIdx++; complatingIdx %= complatingList.length;
             $(".cmdline:last").val(complatingList[complatingIdx]);
             lastVal = $(".cmdline:last").val();
             return;
         }
         var typed = $(".cmdline:last").val();
-        for(var cmd of CMDS_) {
-            if(cmd.indexOf(typed) == 0) {
+        for (var cmd of CMDS_) {
+            if (cmd.indexOf(typed) == 0) {
                 complatingList.push(cmd);
             }
         }
@@ -124,15 +125,15 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         var typed = $(".cmdline:last").val().split(" ")[0];
         // console.log(typed)
         var flag = false, flagFully = false;
-        for(var cmd of CMDS_) {
-            if(cmd.indexOf(typed) == 0) {
+        for (var cmd of CMDS_) {
+            if (cmd.indexOf(typed) == 0) {
                 flag = true;
             }
-            if(cmd == typed) {flagFully = true}
+            if (cmd == typed) { flagFully = true }
         }
-        if(flagFully) {
+        if (flagFully) {
             $(".cmdline:last").addClass("green");
-        } else if(flag) {
+        } else if (flag) {
             // do nothing
         } else {
             $(".cmdline:last").addClass("warn");
@@ -140,10 +141,10 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         return flag;
     }
 
-    
+
     //
     function typing_() {
-        if(lastVal != $(cmdLine_).val()) {
+        if (lastVal != $(cmdLine_).val()) {
             lastVal = $(cmdLine_).val();
             complatingList = [];
             autoComplating = false;
@@ -159,14 +160,14 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             autoComplate();
             cmdCheck();
             e.preventDefault();
-            
+
         } else if (e.keyCode == 13) { // enter
             // Save shell history.
             cmdChecking = false;
             if (this.value) {
                 history_[history_.length] = this.value;
                 histpos_ = history_.length;
-                
+
             }
 
             // Duplicate current input and append to output section.
@@ -179,13 +180,13 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             output_.appendChild(line);
 
             if (this.value && this.value.trim()) {
-                var args = this.value.split(' ').filter(function(val, i) {
+                var args = this.value.split(' ').filter(function (val, i) {
                     return val;
                 });
                 var cmd = args[0].toLowerCase();
                 args = args.splice(1); // Remove cmd from arg list.
             }
-            
+
             switch (cmd) {
                 case 'sudo':
                     output("<span class='error'>Fatal: </span><span class='warn'>Executing commands as root is EXTREMELY dangerous. Please don't do this.</span>");
@@ -203,7 +204,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                     }
                     break;
                 case 'unlock':
-                    var password = args.join(' ');
+                    password = args.join(' ');
                     if (unlocked) {
                         output('不需要，您已經解鎖了。');
                         break;
@@ -226,15 +227,15 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                     if (parm == 'snowman') {
                         output("Do you want to build a snowman?")
                         $("#frozen")[0].play()
-                        $.get("assets/asciiart/snowman.txt", function(data) {
+                        $.get("assets/asciiart/snowman.txt", function (data) {
                             output($("<div>").text(data).html().replace(/\n/g, "<br />"));
                         })
                         // output_.innerHTML = '';
                         // this.value = '';
                         $.snowfall.start({
-                            size: { min: 10, max: 30 } 
+                            size: { min: 10, max: 30 }
                         });
-                        setTimeout(function(){$.snowfall.stop()}, 50000)
+                        setTimeout(function () { $.snowfall.stop() }, 50000)
                     } else {
                         output("usage: build &lt;object&gt;");
                     }
@@ -246,8 +247,8 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                         output('Example: ' + cmd + ' https://ray1422.github.io/');
                         break;
                     }
-                    $.get(url, function(data) {
-                        var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                    $.get(url, function (data) {
+                        var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
                             return '&#' + i.charCodeAt(0) + ';';
                         });
                         output('<pre>' + encodedStr + '</pre>');
@@ -255,8 +256,8 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                     break;
                 case 'screenfetch':
                 case 'neofetch':
-                    $.get('./assets/asciiart/screenfetch.txt', function(data) {
-                        var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                    $.get('./assets/asciiart/screenfetch.txt', function (data) {
+                        var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
                             return '&#' + i.charCodeAt(0) + ';';
                         });
                         output('<pre>' + encodedStr + '</pre>');
@@ -285,19 +286,19 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                     output(navigator.userAgent);
                     break;
                 case 'rm':
-                    if(args.length < 1) {
+                    if (args.length < 1) {
                         output("Usage: " + cmd + " &lt;file&gt;");
                         break;
                     }
                     output('<span class="error">Fatal: </span><span class="warn"><span class="warn"> Permission denied.</span>');
-                break;
+                    break;
                 case 'cp': case 'mv':
-                    if(args.length < 2) {
+                    if (args.length < 2) {
                         output("Usage: " + cmd + " &lt;file&gt; &lt;new file&gt;");
                     } else {
                         output('<span class="error">Fatal: </span><span class="warn"> Permission denied.</span>');
                     }
-                break;
+                    break;
 
 
                 default:
@@ -314,7 +315,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     //
     function formatColumns_(entries) {
         var maxName = entries[0].name;
-        util.toArray(entries).forEach(function(entry, i) {
+        util.toArray(entries).forEach(function (entry, i) {
             if (entry.name.length > maxName.length) {
                 maxName = entry.name;
             }
@@ -349,42 +350,36 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 
     //
     return {
-        init: function() {
+        init: function () {
             output('<h2 style="letter-spacing: 4px; margin-top: -1rem;">魚魚跟胖胖的小屋</h2><p>輸入 help 以獲得更多說明。</p>');
         },
         output: output
     }
 };
 const ALBUM_DIR = "./album/";
-const images_src = [
-    '2019_11_Hsinchu/Hsinchu_Station.jpg',
-    '2019_11_NTPC_Christmas_Land/20191120_193426_987.jpg',
-    '2019_11_NTPC_Christmas_Land/20191121_193704_851-01.jpg',
-    '2019_11_NTPC_Christmas_Land/20191121_195214_522-01.jpg',
-    '2019_11_24_TY/20191125_125241_700.jpg',
-    '2019_12_01_TY/0.jpg',
-    '2019_12_01_TY/1.jpg',
-    '2019_12_01_TY/2.jpg',
-    '2019_12_01_TY/3.jpg',
-    '2019_12_13_TY/0.jpg',
-    '2020_01_11_Syntrend/fish.webp',
-    '2020_01_28_TP_sukiyakino1/IMG_20200128_113805.webp',
-    '2020_02_08_PQ/IMG_20200208_162105-01.jpg',
-    '2020_02_22_sakura/20200222_203222_762.jpg',
-    '2020_02_22_sakura/IMG_20200222_120830.jpg',
-    '2020_02_22_sakura/IMG_20200222_141220.jpg',
-    '2020_02_22_sakura/IMG_20200222_141541.jpg'
-];
+let encrypted_images = []
+$.ajax("album_encrypted/index.json").done((data) => {
+    encrypted_images = data;
+});
 
-var images = [];
-for (var i = 0; i < images_src.length; i++) {
-    images[i] = new Image();
-    images[i].src = ALBUM_DIR + images_src[i];
-}
 
 function setRandImg(eid) {
-    const idx = ~~(Math.random() * images.length);
-    $("#" + eid + " img").attr('src', images[idx].src);
+    const idx = ~~(Math.random() * encrypted_images.length);
+    const encrypted_image = encrypted_images[idx];
+    // decrypted
+    $("#" + eid + " img").attr('src', 'assets/images/loading.gif');
+    $.ajax(`album_encrypted/${encrypted_image}`).done((data) => {
+        var bf = new Blowfish(password, "cbc");
+        // Encrypt and encode to base64
+        // Decrypt
+        let encrypted = data
+        encrypted = bf.base64Decode(encrypted);
+        var decrypted = bf.decrypt(encrypted, 'wwwwwwww').replace(/=/g, '');
+        console.log(decrypted)
+        $("#" + eid + " img").attr('src', 'data:image/jpeg;base64,' + decrypted)
+
+    })
+
 }
 
 function sleep(milliseconds) {
