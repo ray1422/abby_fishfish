@@ -375,7 +375,7 @@ function setRandImg(eid) {
         let encrypted = data
         encrypted = bf.base64Decode(encrypted);
         var decrypted = bf.decrypt(encrypted, 'wwwwwwww').replace(/=/g, '');
-        console.log(decrypted)
+        // console.log(decrypted)
         $("#" + eid + " img").attr('src', 'data:image/jpeg;base64,' + decrypted)
 
     })
