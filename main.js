@@ -260,6 +260,12 @@ var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
                         var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
                             return '&#' + i.charCodeAt(0) + ';';
                         });
+                        let uptime = new Date(new Date().getTime() - new Date("2019-11-12T20:30:00").getTime());
+                        let years = uptime.getFullYear() - 1970;
+                        let months = uptime.getMonth();
+                        let days = uptime.getDate();
+                        let uptimeStr = `${years} year${years > 1 ? 's' : ''} ${months} month${months > 1 ? 's' : ''} ${days} day${days > 1 ? 's' : ''}`
+                        encodedStr = encodedStr.replace('[uptime]', uptimeStr)
                         output('<pre>' + encodedStr + '</pre>');
                         $("#dingdong")[0].play();
                     });
