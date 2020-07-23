@@ -4,6 +4,17 @@ util.toArray = function (list) {
     return Array.prototype.slice.call(list || [], 0);
 };
 
+
+// Cross-browser impl to get document's height.
+function getDocHeight_() {
+    var d = document;
+    return Math.max(
+        Math.max(d.body.scrollHeight, d.documentElement.scrollHeight),
+        Math.max(d.body.offsetHeight, d.documentElement.offsetHeight),
+        Math.max(d.body.clientHeight, d.documentElement.clientHeight)
+    );
+}
+
 var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
     window.URL = window.URL || window.webkitURL;
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -33,7 +44,6 @@ var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
 
     document.body.addEventListener('keydown', ctrlShortcut_, false);
     document.body.addEventListener('keyup', ctrlUp_, false);
-
 
     //
     function ctrlUp_(e) {
@@ -344,15 +354,7 @@ var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
         $(document).scrollTop($(document).height());
     }
 
-    // Cross-browser impl to get document's height.
-    function getDocHeight_() {
-        var d = document;
-        return Math.max(
-            Math.max(d.body.scrollHeight, d.documentElement.scrollHeight),
-            Math.max(d.body.offsetHeight, d.documentElement.offsetHeight),
-            Math.max(d.body.clientHeight, d.documentElement.clientHeight)
-        );
-    }
+
 
     //
     return {
@@ -383,6 +385,12 @@ function setRandImg(eid) {
         var decrypted = bf.decrypt(encrypted, 'wwwwwwww').replace(/=/g, '');
         // console.log(decrypted)
         $("#" + eid + " img").attr('src', 'data:image/jpeg;base64,' + decrypted)
+        setTimeout(
+            () => {
+                window.scrollTo(0, getDocHeight_());
+                console.log(getDocHeight_())
+            }, 10
+        )
 
     })
 

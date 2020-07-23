@@ -108,8 +108,8 @@
   }
   
 .photo {
-    width: 90vw;
-    max-width: 500px;
+    max-height: 75vh;
+    max-width: calc(min(90vw, 500px));
     border: solid white 7px;
     box-shadow: 8px 8px 0 blue;
     margin: .2rem 0 1rem 0;
