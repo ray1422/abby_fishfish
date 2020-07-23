@@ -270,7 +270,7 @@ var Terminal = Terminal || function (cmdLineContainer, outputContainer) {
                         var encodedStr = data.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
                             return '&#' + i.charCodeAt(0) + ';';
                         });
-                        let uptime = new Date(new Date().getTime() - new Date("2019-11-12T20:30:00").getTime());
+                        let uptime = new Date(new Date().getTime() - new Date("2019-11-12T20:30:00+08:00").getTime());
                         let years = uptime.getFullYear() - 1970;
                         let months = uptime.getMonth();
                         let days = uptime.getDate();
