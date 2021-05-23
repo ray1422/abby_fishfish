@@ -3,7 +3,6 @@ import blowfish
 from os import urandom
 import os
 import glob
-import cv2
 import json
 from multiprocessing import Pool
 from tqdm import tqdm
